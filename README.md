@@ -7,6 +7,6 @@
     3.发送内容 (html)
 
 email_reminder.py 和 prodMonitor.py为参考代码
-
+工程主体是 send_email.py
 感谢雷鸣哥的支持!
 somao day day up!
