@@ -44,7 +44,7 @@ def make_content():
 
     # 图片内容
 
-    fp = open('/Users/huaiz/PycharmProjects/send_email/test_img.jpg', 'rb')
+    fp = open('/Users/huaiz/PycharmProjects/send_email/test_img.jpeg', 'rb')
     content_image = MIMEImage(fp.read())
     fp.close()
 
