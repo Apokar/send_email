@@ -34,3 +34,5 @@ def send_email(link, item_name):
     except smtplib.SMTPException, e:
         print "Falied,%s" % e
 
+if __name__ == '__main__':
+    send_email('www.baidu.com','www')

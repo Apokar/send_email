@@ -1,0 +1,9 @@
+
+.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/send_email.iml
+.idea/workspace.xml
+email_reminder.py
+prodMonitor.py
+test.py
