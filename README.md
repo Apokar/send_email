@@ -5,3 +5,8 @@
     1.发件人邮箱
     2.发件人密码
     3.发送内容 (html)
+
+email_reminder.py 和 prodMonitor.py为参考代码
+
+感谢雷鸣哥的支持!
+somao day day up!
