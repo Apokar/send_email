@@ -10,7 +10,9 @@ import datetime
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
+from email.utils import parseaddr, formataddr
+from email.header import Header
+from email.utils import formataddr
 
 
 def email_sender(receiver_list, sender_email, sender_passwd, content):
@@ -30,16 +32,32 @@ def email_sender(receiver_list, sender_email, sender_passwd, content):
 
 def make_content():
     # HTML 内容(文本+图片)
+
     contentRoot = MIMEMultipart('related')
-    contentRoot['Subject'] = '批量邮件测试'
-    contentRoot["From"] = sender_email
+    contentRoot['Subject'] = Header('搜猫数据打造人工智能销售新模式', 'utf-8')
+    h = Header(u'搜猫数据', 'utf-8')
+    h.append('<bd@somaodata.com>', 'ascii')
+    contentRoot['From'] = h
+    # contentRoot['From'] = Header(u'搜猫数据', 'utf-8')
+    # contentRoot['From'] = Header(sender_email, 'utf-8')
 
     # 文本 内容
     content_text = MIMEText(
+
         '<html>'
         '<head>'
         '<title>email</title>'
         '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'
+        '<style type="text/css">'
+        '.border {'
+        'border-top: 1px solid #ebebeb;'
+        'margin-left: 65px;'
+        'width: 650px;'
+        '}'
+        '.dm {'
+        'margin-top: 20px;'
+        '}'
+        '</style>'
         '</head>'
         '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'
         '<!-- Save for Web Slices (email.png) -->'
@@ -64,16 +82,42 @@ def make_content():
         '<img src="http://www.somaodata.com/upload/email/email_05.gif" width="640" height="96" alt=""></td>'
         '</tr>'
         '</table>'
+        '<div class="border">'
+        '<table class="dm">'
+        '<tbody>'
+
+        '<tr>'
+        '<td><b style="font-family:楷体,Times New Roman;font-size:16px">葛鑫</b></td>'
+        '<td><p style="font-family:Times New Roman;font-size:16px">销售总监</p></td>'
+        '</tr>'
+        '<tr>'
+        '<td><b style="font-family:楷体,Times New Roman;font-size:16px">微信</b></td>'
+        '<td><p style="font-family:Times New Roman;font-size:16px">15805165835</p></td>'
+        '</tr>'
+        '<tr>'
+        '<td><b style="font-family:Times New Roman;font-size:16px">QQ</b></td>'
+        '<td><p style="font-family:Times New Roman;font-size:16px">1905487560</p></td>'
+        '</tr>'
+        '<tr>'
+        '<td><b style="font-family:Times New Roman;font-size:16px">Tel</b></td>'
+        '<td><p style="font-family:Times New Roman;font-size:16px">15805165835</p></td>'
+        '</tr>'
+        '<tr>'
+        '<td><b style="font-family:Times New Roman;font-size:16px">Email</b></td>'
+        '<td><p style="font-family:Times New Roman;font-size:16px">gexin@somaodata.com</p></td>'
+        '</tr>'
+        '<tr>'
+        '<td><b style="font-family:Times New Roman;font-size:16px">Addr</b></td>'
+        '<td><p style="font-family:楷体,Times New Roman;font-size:16px">南京市鼓楼区新模范马路66号物联网科技园12楼1201</p></td>'
+        '</tr>'
+
+        '</tbody>'
+        '</table>'
+        '</div>'
         '<!-- End Save for Web Slices -->'
         '</body>'
         '</html>'
 
-        '<p><b>葛鑫  销售总监</b></p>'
-        '<p>微信：<b>15805165835</b></p>'
-        '<p>QQ：<b>1905487560</b></p>'
-        '<p>Mobile：<b>15805165835</b></p>'
-        '<p>E - mail：<b>gexin@somaodata.cm</b></p>'
-        '<p>Add：<b>南京市鼓楼区新模范马路66号物联网科技园12楼1201</b></p>'
         ,
         'html',
         'utf-8')
@@ -93,10 +137,16 @@ def make_content():
 
 if __name__ == '__main__':
     # 接受邮箱列表
-    receiver_list = ['wuhuaizheng@somaodata.com','leiming@somaodata.com']
+    receiver_list = [
+
+        'wuhuaizheng@somaodata.com'
+        , 'leiming@somaodata.com'
+        , 'wenwen@somaodata.com'
+        , 'shenyukuan@somaodata.com'
+    ]
 
     # 发件人信息
-    sender_email = 'gexin@somaodata.com'
+    sender_email = 'bd@somaodata.com'
     sender_password = 'somao@520'
 
     content = make_content()
